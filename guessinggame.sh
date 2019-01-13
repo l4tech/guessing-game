@@ -1,9 +1,7 @@
-! usr/bin/env bash
+#! usr/bin/env bash
 #continuously ask the user to guess the number of files in the current directory, until they guess the correct number.
 
-echo "guess the number of files in the current directory"
-
-#function to return no of files
+#function to return no of files in the current directory
 function num_files {
 local num=0
 num=$(ls -l|grep ^-|wc -l)
@@ -12,12 +10,13 @@ echo  $num
 
 input=-1
 
-#note that while loop is made to  execute at least once, regardless of user input
+#note that the while loop is made to  execute at least once, regardless of user input
+# below condition is always true the first time the program runs because inut is initialiazed to -1
 while [[ $input -ne $(num_files) ]]
 do
 	echo "make a guess for number of files in the current directory"
 	read input
-echo "input: $input"
+
 if [[ $input -lt 0 ]]
 then echo "negative input is not allowed. Please enter again"
 
